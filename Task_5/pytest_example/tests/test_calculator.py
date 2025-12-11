@@ -40,3 +40,8 @@ def test_heavy_computation(calc):
     import time
     time.sleep(5)  # Симуляция долгой операции
     assert calc.multiply(1000, 1000) == 1000000
+
+@pytest.mark.skipif(sys.platform == "win32", reason="Does not run on Windows")
+def test_specific_platform(calc):
+# Тест, специфичный для Unix-систем
+    assert calc.divide(10, 2) == 5
